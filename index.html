@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIRKEL PURNAMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-screen="home" class="intro">
+
+  <!-- Background art layers.
+     Tiap layar punya latar sendiri: assets/menus/<layar>.jpg
+     (members, events, gallery, about, contact). Kalau file belum ada,
+     garis-garis CSS dengan warna khas layar itu yang tampil. -->
+  <div id="bg" aria-hidden="true">
+    <div class="bg-layer" id="bg-stripes"></div>
+    <svg class="bg-star" style="left:6%;top:8%;width:26vmax;height:26vmax" viewBox="0 0 100 100">
+      <polygon points="50,0 60,35 98,35 68,57 78,94 50,72 22,94 32,57 2,35 40,35" fill="#000" />
+    </svg>
+    <svg class="bg-star s2" style="right:4%;bottom:6%;width:34vmax;height:34vmax" viewBox="0 0 100 100">
+      <polygon points="50,0 60,35 98,35 68,57 78,94 50,72 22,94 32,57 2,35 40,35" fill="#fff" />
+    </svg>
+
+    <!-- HOME: video latar. Muncul (fade-in) setelah transisi wipe,
+       dan diputar ulang dari awal tiap kembali ke Home.
+       poster = gambar cadangan: assets/menus/home.jpg -->
+    <video class="menu-art" id="art-home" src="assets/video/home.mp4" poster="assets/menus/home.jpg" autoplay muted loop
+      playsinline preload="auto" onloadeddata="document.body.classList.add('has-art-home')"></video>
+
+    <img class="menu-art" id="art-members" src="assets/menus/member.jpg" alt=""
+      onload="document.body.classList.add('has-art-members')" onerror="this.remove()">
+    <img class="menu-art" id="art-events" src="assets/menus/events.jpg" alt=""
+      onload="document.body.classList.add('has-art-events')" onerror="this.remove()">
+    <img class="menu-art" id="art-gallery" src="assets/menus/gallery.jpg" alt=""
+      onload="document.body.classList.add('has-art-gallery')" onerror="this.remove()">
+    <img class="menu-art" id="art-about" src="assets/menus/tentang.jpg" alt=""
+      onload="document.body.classList.add('has-art-about')" onerror="this.remove()">
+    <img class="menu-art" id="art-contact" src="assets/menus/kontak.jpg" alt=""
+      onload="document.body.classList.add('has-art-contact')" onerror="this.remove()">
+    <div class="bg-layer" id="bg-halftone"></div>
+    <div class="bg-layer" id="bg-vignette"></div>
+  </div>
+  <div id="slash" aria-hidden="true"></div>
+
+  <!-- Screen transition wipe -->
+  <div id="wipe" aria-hidden="true">
+    <div class="pane p3"></div>
+    <div class="pane p2"></div>
+    <div class="pane p1"></div>
+    <div class="flash"></div>
+  </div>
+
+  <!-- Kursor animasi (sprite di assets/cursors/), SFX pilih, musik latar opsional -->
+  <div id="cursor" aria-hidden="true"></div>
+  <audio id="sfx-select" src="assets/sfx/select.mp3" preload="auto"></audio>
+  <audio id="bgm" src="assets/sfx/backsound.mp3" loop preload="none"></audio>
+  <button id="audio-toggle" aria-label="Nyalakan musik">🔇</button>
+
+  <div id="shell">
+    <div id="hud-top">
+      <div class="hud-tag">Sirkel // BULAN PURNAMA</div>
+      <div class="hud-tag alt">9 ANGGOTA · KUMPUL TIAP PURNAMA</div>
+    </div>
+
+    <div id="stage">
+
+      <!-- HOME -->
+      <section class="screen active" id="screen-home" aria-label="Menu utama">
+        <div id="intro-eyebrow">Selamat datang di sirkel kami</div>
+        <h1 id="big-name">
+          <span class="ransom" data-ransom="SIRKEL"></span>
+          <span class="ransom" data-ransom="PURNAMA"></span>
+        </h1>
+        <p id="tagline">
+          Sembilan orang, satu lingkaran. Setiap bulan purnama kami berkumpul,
+          bercerita, makan bareng, dan membuat kenangan baru.
+        </p>
+        <nav id="menu" aria-label="Bagian situs">
+          <button class="menu-item sel" data-target="members">
+            <span class="ransom" data-ransom="ANGGOTA"></span><span class="cursor-mark">◀</span>
+          </button>
+          <button class="menu-item" data-target="events">
+            <span class="ransom" data-ransom="KEGIATAN"></span><span class="cursor-mark">◀</span>
+          </button>
+          <button class="menu-item" data-target="gallery">
+            <span class="ransom" data-ransom="GALERI"></span><span class="cursor-mark">◀</span>
+          </button>
+          <button class="menu-item" data-target="about">
+            <span class="ransom" data-ransom="TENTANG"></span><span class="cursor-mark">◀</span>
+          </button>
+          <button class="menu-item" data-target="contact">
+            <span class="ransom" data-ransom="KONTAK"></span><span class="cursor-mark">◀</span>
+          </button>
+        </nav>
+      </section>
+
+      <!-- ANGGOTA -->
+      <section class="screen sub" id="screen-members" aria-label="Anggota">
+        <div class="screen-head"><span class="ransom" data-ransom="ANGGOTA"></span></div>
+        <button class="back-hint" data-back>ESC · Kembali</button>
+        <div class="grid-label"><span class="bar"></span>Sembilan anggota</div>
+        <div id="member-grid" class="grid"></div>
+      </section>
+
+      <!-- KEGIATAN -->
+      <section class="screen sub" id="screen-events" aria-label="Kegiatan">
+        <div class="screen-head"><span class="ransom" data-ransom="KEGIATAN"></span></div>
+        <button class="back-hint" data-back>ESC · Kembali</button>
+        <div class="grid-label"><span class="bar"></span>Agenda sirkel</div>
+        <div id="event-grid" class="grid"></div>
+      </section>
+
+      <!-- GALERI -->
+      <section class="screen sub" id="screen-gallery" aria-label="Galeri">
+        <div class="screen-head"><span class="ransom" data-ransom="GALERI"></span></div>
+        <button class="back-hint" data-back>ESC · Kembali</button>
+        <div class="grid-label"><span class="bar"></span>Momen kami</div>
+        <div id="gallery-grid" class="grid"></div>
+      </section>
+
+      <!-- TENTANG -->
+      <section class="screen sub align-right" id="screen-about" aria-label="Tentang">
+        <div class="screen-head"><span class="ransom" data-ransom="TENTANG"></span></div>
+        <button class="back-hint" data-back>ESC · Kembali</button>
+        <div class="paper">
+          <!-- Foto bersama: taruh di assets/group.jpg -->
+          <figure class="about-photo">
+            <img src="assets/group.jpg" alt="Foto bersama sirkel" onerror="this.closest('figure').remove()">
+            <figcaption>KAMI BERSEMBILAN</figcaption>
+          </figure>
+          <p class="quote">Kami adalah <strong class="about-highlight">sirkel beranggotakan 9 orang</strong>
+            yang bertemu setiap <strong class="about-highlight">bulan purnama</strong>.</p>
+          <br>
+          <p>Berawal dari satu ajakan makan malam dadakan, sekarang kumpul purnama sudah jadi
+            tradisi. Tidak ada agenda yang kaku: kadang makan, kadang camping, kadang cuma
+            duduk bercerita sampai larut.</p>
+          <br>
+          <p>Di sini kami saling mendengarkan, saling mendukung, dan menjaga satu aturan sederhana:
+            <strong class="about-highlight">siapa pun yang datang, diterima apa adanya.</strong>
+          </p>
+          <br>
+          <p class="about-quote"><strong>“Satu lingkaran, sembilan cerita.”</strong></p>
+        </div>
+      </section>
+
+      <!-- KONTAK -->
+      <section class="screen sub align-right" id="screen-contact" aria-label="Kontak">
+        <div class="screen-head"><span class="ransom" data-ransom="KONTAK"></span></div>
+        <button class="back-hint" data-back>ESC · Kembali</button>
+        <div class="paper" style="max-width:620px">
+          <p>Mau ikut kumpul purnama berikutnya atau sekadar menyapa?
+            <strong>Kirim pesan di bawah</strong> atau hubungi kami lewat salah satu jalur ini:
+          </p>
+        </div>
+        <div class="contact-list">
+          <!-- GANTI link di bawah dengan milik sirkelmu -->
+          <a class="contact-chip" href="mailto:emailkamu@contoh.com"><span>Email ✉</span></a>
+          <a class="contact-chip" href="https://instagram.com/" target="_blank" rel="noopener"><span>Instagram
+              ↗</span></a>
+          <a class="contact-chip" href="https://wa.me/" target="_blank" rel="noopener"><span>WhatsApp ↗</span></a>
+        </div>
+
+        <!-- Formulir dikirim lewat formsubmit.co ke Model.contactEmail (js/model.js).
+           Pengiriman pertama akan meminta aktivasi lewat email. -->
+        <form id="contact-form" class="paper" style="max-width:620px" novalidate>
+          <div class="form-head">Kirim pesan</div>
+          <label class="field"><span>Nama</span>
+            <input type="text" name="name" required maxlength="100" autocomplete="name"></label>
+          <label class="field"><span>Email kamu</span>
+            <input type="email" name="email" required maxlength="150" autocomplete="email"></label>
+          <label class="field"><span>Pesan</span>
+            <textarea name="message" required rows="5" maxlength="3000"></textarea></label>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px"
+            aria-hidden="true">
+          <div class="form-foot">
+            <button type="submit" class="cv-btn form-send"><span>Kirim ➤</span></button>
+            <div id="form-status" role="status"></div>
+          </div>
+        </form>
+      </section>
+
+    </div>
+
+    <div id="hud-bottom">
+      <span><span class="key">↑↓</span>Pilih</span>
+      <span><span class="key">Enter</span>Buka</span>
+      <span><span class="key">Esc</span>Kembali</span>
+      <span style="margin-left:auto;opacity:.8" id="clock"></span>
+    </div>
+  </div>
+
+  <!-- MVC: model = data, view = DOM, controller = events -->
+  <script src="js/model.js" defer></script>
+  <script src="js/view.js" defer></script>
+  <script src="js/controller.js" defer></script>
+</body>
+
+</html>
