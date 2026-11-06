@@ -21,7 +21,7 @@ const Model = {
     { name: "Nazmy",   rn: "I",    arcana: "Magician",   rank: 10, photo: "assets/members/nazmy.jpeg",   quote: "Build with intention, refined over time." },
     { name: "Althaf",  rn: "II",   arcana: "Priestess",  rank: 9,  photo: "assets/members/althaf.jpeg",  quote: "Hidup itu sederhana, kita yang membuatnya rumiT." },
     { name: "Kiram",  rn: "III",  arcana: "Empress",    rank: 8,  photo: "assets/members/kiram.jpeg",  quote: "Ga perlu kata-kata, yang penting aksi nyata." },
-    { name: "Faris",   rn: "IV",   arcana: "Emperor",    rank: 9,  photo: "assets/members/Faris.jpeg",   quote: "Try To Be Better." },
+    { name: "Faris",   rn: "IV",   arcana: "Emperor",    rank: 9,  photo: "assets/members/faris.jpeg",   quote: "Try To Be Better." },
     { name: "Zen",   rn: "V",    arcana: "Hierophant", rank: 7,  photo: "assets/members/Zen.jpeg",   quote: "Bukan orang bener, tapi beneran orang." },
     { name: "Naufal",  rn: "VI",   arcana: "Lovers",     rank: 8,  photo: "assets/members/naufal.jpeg",  quote: "A lot has changed, but Im still here." },
     { name: "Pandu",   rn: "VII",  arcana: "Chariot",    rank: 6,  photo: "assets/members/ndu.jpeg",   quote: "Kejarlah cita-cita, jangan dia yang ngga cinta." },
@@ -31,19 +31,19 @@ const Model = {
 
   // ---- Kegiatan ----
   events: [
-    { title: "Kumpul",      tag: "Rutin",   color: "#3dc8ff", when: "TIAP BULAN HARI", where: "Rumah Kiram", desc: "Acara utama sirkel: makan, ngobrol, dan nugas." },
-    { title: "Makan Malam Bareng",  tag: "Bulanan", color: "#7c6cff", when: "AKHIR BULAN",        where: "Rumah anggota",    desc: "Masak ramai-ramai, tiap bulan giliran satu anggota jadi tuan rumah." },
-    { title: "Camping Tahunan",     tag: "Tahunan", color: "#18c5b0", when: "SETIAP AGUSTUS",     where: "Puncak",           desc: "Satu malam di bawah bulan, tenda, api unggun, dan gitar." },
-    { title: "Ulang Tahun Anggota", tag: "Spesial", color: "#ffb347", when: "SESUAI TANGGAL",     where: "Kejutan",          desc: "Tidak ada yang boleh ulang tahun sendirian." },
+    { title: "Kumpul",      tag: "Rutin",   color: "#3dc8ff", when: "TIAP HARI", where: "rumah Kiram", desc: "Acara utama sirkel: makan, ngobrol, dan nugas." },
+    { title: "Nugas Bareng",  tag: "Rutin", color: "#7c6cff", when: "AKHIR HARI",        where: "rumah kiram",    desc: "Nugas loh ya cik." },
+    { title: "Makan bareng",     tag: "Rutin", color: "#18c5b0", when: "SETIAP HARI",     where: "tergantung",           desc: "Makan biar jadi orang." },
+    { title: "Mabar Roblox", tag: "Terkadang", color: "#ffb347", when: "KALAU GA SIBUK",     where: "rumah",          desc: "When roblok wok?." },
   ],
 
   // ---- Galeri. img = assets/gallery/<nomor>.jpg ----
   gallery: [
-    { title: "Purnama Pertama", desc: "Awal dari semuanya.",              img: "assets/gallery/01.jpg" },
-    { title: "Camping Puncak",  desc: "Tenda bocor, tawa tidak.",         img: "assets/gallery/02.jpg" },
-    { title: "Karaoke",         desc: "Suara pas-pasan, semangat penuh.", img: "assets/gallery/03.jpg" },
-    { title: "Piknik Pantai",   desc: "Matahari terbit bareng.",          img: "assets/gallery/04.jpg" },
-    { title: "Bakar-bakaran",   desc: "Sekar di dapur, Raka di kamera.",  img: "assets/gallery/05.jpg" },
-    { title: "Ulang Tahun",     desc: "Kue hampir jatuh.",                img: "assets/gallery/06.jpg" },
+    { title: "Perawalan", desc: "Awal dari semuanya.",              img: "assets/gallery/1.jpeg" },
+    { title: "Fotbar",  desc: "Keren bang kata moms teddy.",         img: "assets/gallery/11.jpeg" },
+    { title: "Main ps",         desc: "Yang kalah dikecup faris.", img: "assets/gallery/7.jpeg" },
+    { title: "Seminar Insyfest",   desc: "Duh Pandu hot banget.",          img: "assets/gallery/5.jpeg" },
+    { title: "Foto with outsiders",   desc: "Random kid.",  img: "assets/gallery/2.jpeg" },
+    { title: "Fotobar",     desc: "idk man.",                img: "assets/gallery/4.jpeg" },
   ],
 };
