@@ -59,7 +59,7 @@ const View = {
 // Force specific letters to have black boxes
 if (
   (text === "SIRKEL" && c === "K") ||
-  (text === "PURNAMA" && c === "N")
+  (text === "SOLIDARITY" && c === "N")
 ) {
   span.classList.add("box");
 }
